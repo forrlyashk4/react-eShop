@@ -6,6 +6,10 @@ body {
   background-color: rgba(231, 246, 255, 1);
 }
 
+* {
+  font-family: 'Inter', system-ui;;
+}
+
 .wrapper {
   background: #fff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
@@ -18,6 +22,9 @@ body {
 header {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 20px;
+  margin-bottom: 50px;
+  border-bottom: 1px solid lightgray;
 
   .headerLeft {
     display: flex;
@@ -33,10 +40,47 @@ header {
       margin: 0;
     }
   }
+
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    li {
+      margin-left: 30px;
+      display: flex;
+      align-items: center;
+    }
+    span {
+      margin-left: 10px;
+      color: rgba(92, 92, 92, 1);
+      font-weight: 500;
+    }
+  }
 }
 
 .content {
   padding: 0 60px;
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.searchBlock {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(243, 243, 243, 1);
+  border-radius: 10px;
+  padding-left: 10px;
+  input {
+    border: 0;
+    padding: 10px;
+    font-size: 16px;
+    &:focus-visible {
+      outline: none;
+    }
+  }
 }
 
 .cardList {
@@ -52,6 +96,7 @@ header {
   text-align: center;
   max-width: 21.8%;
   padding: 30px 27px;
+  position: relative;
 
   img {
     width: 133px;
@@ -61,6 +106,14 @@ header {
   p {
     text-align: left;
     font-size: 14px;
+  }
+
+  &__likeButton {
+    width: 32px !important;
+    height: 32px !important;
+    position: absolute;
+    cursor: pointer;
+    left: 27px;
   }
 
   &__bottom {
@@ -76,6 +129,20 @@ header {
       font-size: 11px;
     }
 
+    button {
+      cursor: pointer;
+      box-sizing: border-box;
+      padding: 0;
+      background: none;
+      border: none;
+      width: 32px;
+      height: 32px;
+      img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
     .card__price {
       color: black;
       font-weight: 700;
@@ -86,6 +153,151 @@ header {
       padding: 9px;
       border: 1px solid rgba(242, 242, 242, 1);
       border-radius: 8px;
+    }
+  }
+
+  transition: .2s;
+  &:hover {
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px);
+    cursor: default;
+  }
+
+  &:nth-child(4n) {
+    margin-right: 15px !important;
+  }
+
+  &:nth-child(5n), &:nth-child(1) {
+    margin-left: 15px !important;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+}
+
+.drawer {
+  box-sizing: border-box;
+  position: absolute;
+  width: 385px;
+  right: 0;
+  height: 100%;
+  background: #fff;
+  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    margin: 0 0 20px;
+    font-size: 24px;
+    position: relative;
+    img {
+      position: absolute;
+      right: 0;
+      top: -2px;
+      cursor: pointer;
+      opacity: .5;
+      transition: .15s;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .cart__content {
+    flex: 1;
+    overflow: auto;
+  }
+
+  button {
+    background: rgba(157, 212, 88, 1);
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    padding: 18px 30px;
+    border-radius: 15px;
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    transition: .3s;
+    &:hover {
+      background: rgb(163, 231, 79);;
+    }
+    img {
+      position: absolute;
+      right: 24px;
+      top: calc(50% - 7px);
+    }
+  }
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid #f3f3f3;
+  border-radius: 20px;
+  margin-top: 15px;
+  &__img {
+    width: 70px;
+    height: 70px;
+  }
+
+  div {
+    margin: 0 20px;
+  }
+  p {
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  b {
+    font-size: 14px;
+  }
+
+  &__icon {
+    cursor: pointer;
+    opacity: .5;
+    transition: .15s;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.bottomItems {
+  ul {
+    padding-left: 0;
+
+    li {
+      display: flex;
+      align-items: flex-end;
+      margin-top: 20px;
+      &:nth-child(1) {
+        margin-top: 0;
+      }
+
+      div {
+        flex: 1;
+        height: 1px;
+        border-top: 1px dashed rgba(223, 223, 223, 1);
+        margin: 0 12px;
+        position: relative;
+        top: -2px;
+      }
+
+      b {
+        font-weight: 600;
+      }
     }
   }
 }
