@@ -1,18 +1,22 @@
-export default function Drawer() {
+export default function Drawer({ onClose, items = [] }) {
   return (
     <div className="overlay">
       <div className="drawer">
-        <h2>Корзина <img src="/img/remove-active.svg" alt="remove"></img></h2>
+        <h2>Корзина
+        <img src="/img/remove-active.svg" alt="Close"
+        onClick={onClose}></img></h2>
 
         <div className="cart__content">
-          <div className="cartItem">
-            <img src="/img/blazerMid.png" className="cartItem__img" alt="blazer mid"></img>
-            <div>
-              <p>Мужские Кроссовки Nike Air Max 270</p>
-              <b>8 499 руб.</b>
-            </div>
-            <img src="/img/remove-active.svg" className="cartItem__icon" alt="remove"></img>
-          </div>
+          {items.map((itemData) => {
+            return (<div className="cartItem">
+              <img src={itemData.imgUrl} className="cartItem__img" alt="blazer mid"></img>
+              <div>
+                <p>{itemData.title}</p>
+                <b>{itemData.price} руб.</b>
+              </div>
+              <img src="/img/remove-active.svg" className="cartItem__icon" alt="remove"></img>
+            </div>);
+          })}
         </div>
 
         <div className="bottomItems">

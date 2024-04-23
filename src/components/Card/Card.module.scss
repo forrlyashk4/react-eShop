@@ -1,0 +1,81 @@
+.card {
+  margin: 15px 30px 15px 0;
+  box-sizing: border-box;
+  border: 1px solid rgba(243, 243, 243, 1);
+  border-radius: 40px;
+  text-align: center;
+  max-width: 21.8%;
+  padding: 30px 27px;
+  position: relative;
+
+  img {
+    width: 133px;
+    height: 112px;
+  }
+
+  p {
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .favorite {
+    width: 32px !important;
+    height: 32px !important;
+    position: absolute;
+    cursor: pointer;
+    left: 27px;
+  }
+
+  .cardBottom {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      display: block;
+      color: rgba(189, 189, 189, 1);
+      font-weight: 500;
+      font-size: 11px;
+    }
+
+    img {
+      cursor: pointer;
+      box-sizing: border-box;
+      padding: 0;
+      background: none;
+      border: none;
+      width: 32px;
+      height: 32px;
+      width: 32px;
+      height: 32px;
+    }
+
+    .cardPrice {
+      color: black;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    svg {
+      padding: 9px;
+      border: 1px solid rgba(242, 242, 242, 1);
+      border-radius: 8px;
+    }
+  }
+
+  transition: .2s;
+  &:hover {
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px);
+    cursor: default;
+  }
+
+  &:nth-child(4n) {
+    margin-right: 15px !important;
+  }
+
+  &:nth-child(5n), &:nth-child(1) {
+    margin-left: 15px !important;
+  }
+}
